@@ -3,5 +3,27 @@
 # Пример:
 # [1.1, 1.2, 3.1, 5, 10.01] => 0.19
 
+import os
+import random
+os.system("cls")
 
+n = int(input("Введите размерность списка N = "))
+min = int(input("Введите минимальное значение списка: "))
+max = int(input("Введите максимальное значение списка: "))
+print('\n')
 
+lst = [round(random.uniform(min, max), 2) for i in range(n)]    # создали список вещественных чисел размерности N
+
+fract_lst = []
+for i in range(n):  # выделили дробную часть у каждого элемента списка с учётом знака числа
+    if lst[i] < 0:
+        fract_lst.insert(i, round((lst[i] + (-1 * lst[i]//1)), 2))
+    else:
+        fract_lst.insert(i, round((lst[i] - lst[i]//1), 2))
+
+fract_lst.sort()    # отсортировали дробные части по возрастанию
+
+diff = round((fract_lst[-1] - fract_lst[0]), 2)  # нашли разницу между последним и первым элементом отсортированного списка
+
+print(f'{lst} => {diff}')
+print('\n')
