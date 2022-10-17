@@ -5,3 +5,15 @@
 # 2 -> 10
 
 
+import os
+os.system("cls")
+
+n = int(input("Введите целое число для преобразования: "))
+a = n
+print("\n")
+b = ''
+while n > 0:
+    b = str(n % 2) + b
+    n = n // 2
+print(f'{a} (dec) -> {b} (bin)')
+print("\n")
