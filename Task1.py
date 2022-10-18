@@ -19,6 +19,6 @@ i = 1
 while i < len(lst):
     lst_new.append(lst[i])
     i +=2
-print(lst_new)
-
-print(sum(lst_new))
+print(f'на нечётных позициях элементы {lst_new}')
+k = sum(lst_new)
+print(f'их сумма равна: {k}')
