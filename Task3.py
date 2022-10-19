@@ -10,6 +10,7 @@ n = int(input("Введите размерность списка N = "))
 print('\n')
 
 lst = [float(input(f'Введите {i+1}-й элемент списка: ')) for i in range(n)]    # создали список вещественных чисел размерности N
+print('\n')
 
 fract_lst = []      # создали список из дробных частей с учётом знака числа
 for i in range(n):
@@ -19,12 +20,10 @@ for i in range(n):
         fract_lst.append(lst[i]%1)
 
 fract_lst.sort()    # отсортировали дробные части по возрастанию
-print(fract_lst)
 
 for i in range(n):
     if 0 in fract_lst:
         fract_lst.remove(0.0) # удалили из списка нули, если таковые имеется
-print(fract_lst)
 
 if len(fract_lst) == 1:
     diff  = fract_lst[0]
