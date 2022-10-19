@@ -4,26 +4,32 @@
 # [1.1, 1.2, 3.1, 5, 10.01] => 0.19
 
 import os
-import random
 os.system("cls")
 
 n = int(input("Введите размерность списка N = "))
-min = int(input("Введите минимальное значение списка: "))
-max = int(input("Введите максимальное значение списка: "))
 print('\n')
 
-lst = [round(random.uniform(min, max), 2) for i in range(n)]    # создали список вещественных чисел размерности N
+lst = [float(input(f'Введите {i+1}-й элемент списка: ')) for i in range(n)]    # создали список вещественных чисел размерности N
 
-fract_lst = []
-for i in range(n):  # выделили дробную часть у каждого элемента списка с учётом знака числа
+fract_lst = []      # создали список из дробных частей с учётом знака числа
+for i in range(n):
     if lst[i] < 0:
-        fract_lst.insert(i, round((lst[i] + (-1 * lst[i]//1)), 2))
+        fract_lst.append(1 - lst[i]%1)
     else:
-        fract_lst.insert(i, round((lst[i] - lst[i]//1), 2))
+        fract_lst.append(lst[i]%1)
 
 fract_lst.sort()    # отсортировали дробные части по возрастанию
+print(fract_lst)
 
-diff = round((fract_lst[-1] - fract_lst[0]), 2)  # нашли разницу между последним и первым элементом отсортированного списка
+for i in range(n):
+    if 0 in fract_lst:
+        fract_lst.remove(0.0) # удалили из списка нули, если таковые имеется
+print(fract_lst)
+
+if len(fract_lst) == 1:
+    diff  = fract_lst[0]
+else:
+    diff = (fract_lst[-1] - fract_lst[0])  # нашли разницу между последним и первым элементом отсортированного списка
 
 print(f'{lst} => {diff}')
 print('\n')
